@@ -25,7 +25,7 @@ def webServer(port=13331):
 
         try:
           # Fill in start -a client is sending you a message   #Fill in end
-          message = connectionSocket.recv(1024).decode
+          message = connectionSocket.recv(1024)
           # print(f"Message:\n{connectionSocket.recv(1024)}")
           filename = message.split()[1]
 
