@@ -41,7 +41,10 @@ def webServer(port=13331):
 
           # Send an HTTP header line into socket for a valid request. What header should be sent for a response that is ok?
           # Fill in start
-          connectionSocket.send("\nHTTP/1.1 200 OK\n\n".encode())
+          connectionSocket.recv(1024)
+          connectionSocket.send(b"\nHTTP/1.1 200 OK\n\n")
+          connectionSocket.send(b'Content-Type: text/html\n')
+          connectionSocket.send(b'\n')
           # Fill in end
 
           # Send the content of the requested file to the client
