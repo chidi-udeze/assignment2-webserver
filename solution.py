@@ -20,9 +20,9 @@ def webServer(port=13331):
           f.close()
 
           connectionSocket.send(b'HTTP/1.0 200 OK\nContent-Type: text/html\n\n')
-          
-          for i in range(0, len(outputdata)): 
-              connectionSocket.send(outputdata[i].encode())
+          connectionSocket.send(outputdata.encode())
+          # for i in range(0, len(outputdata)): 
+          #     connectionSocket.send(outputdata[i].encode())
           connectionSocket.close() 
         except IOError:
           error = "HTTP/1.1 404 Not Found\n"
