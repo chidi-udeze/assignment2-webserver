@@ -24,6 +24,7 @@ def webServer(port=13331):
           connectionSocket.send(b'\n')
           for i in range(0, len(outputdata)): 
               connectionSocket.send(outputdata[i].encode())
+              connectionSocket.send("\r\n".encode()) 
           connectionSocket.close() 
         except IOError:
           error = "HTTP/1.1 404 Not Found\n"
