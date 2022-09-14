@@ -17,9 +17,9 @@ def webServer(port=13331):
           filename = message.split()[1]
           f = open(filename[1:]) 
           outputdata = f.read()
-          
+          messageone = "HTTP/1.0 200 OK\n"
 
-          connectionSocket.send(b'HTTP/1.0 200 OK\n')
+          connectionSocket.send(messageone.encode())
           connectionSocket.send(b'Content-Type: text/html\n')
           connectionSocket.send(b'\n')
           for i in range(0, len(outputdata)): 
