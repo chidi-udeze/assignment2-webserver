@@ -17,14 +17,13 @@ def webServer(port=13331):
           filename = message.split()[1]
           f = open(filename[1:]) 
           outputdata = f.read()
-          messageone = "HTTP/1.0 200 OK\n"
+          f.close()
 
-          connectionSocket.send(messageone.encode())
+          connectionSocket.send(b'HTTP/1.0 200 OK\n')
           connectionSocket.send(b'Content-Type: text/html\n')
           connectionSocket.send(b'\n')
           for i in range(0, len(outputdata)): 
               connectionSocket.send(outputdata[i].encode())
-              connectionSocket.send("\r\n".encode()) 
           connectionSocket.close() 
         except IOError:
           error = "HTTP/1.1 404 Not Found\n"
@@ -38,3 +37,5 @@ def webServer(port=13331):
     sys.exit() 
 
 
+if __name__ == "__main__":
+    webServer(13331)
